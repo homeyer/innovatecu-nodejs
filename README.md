@@ -31,3 +31,19 @@ This is how the node.js event loop works:
 3. the function registered as the callback was called
 4. you sent hello world to the browser
 5. node is passive, waiting for the next event to trigger
+
+### Example 4: async vs sync
+
+the-not-so-good-way.js: shows how synchronous programming isn't the node way. ties up the event loop, you shouldn't do blocking actions when possible.
+
+the-node-way.js: let I/O operations happen asynchronously.
+
+### Example 5: using npm for dependencies (or, how to download cats)
+
+npm is node's package manager.
+
+the package.json file represents what dependencies your node app has.
+
+to create package.json, run `npm init`, follow the prompts.
+
+install dependencies by running `npm install <name> --save`. The `--save` modifier adds it to package.json. Use `--save-dev` if it's only for dev environments (like test dependencies).
