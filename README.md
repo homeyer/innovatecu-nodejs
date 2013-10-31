@@ -1,4 +1,3 @@
-innovatecu-nodejs
-=================
+## Node.js Workshop - Innovate CU, Nov 4th
 
-InnovateCU workshop on node.js, given November 4th, 2013
+slides: https://docs.google.com/presentation/d/1bcQZYTbS0CoRkeOdnH9frxBwg5UOZY3TcizXRzYxbQU/edit?usp=sharing
