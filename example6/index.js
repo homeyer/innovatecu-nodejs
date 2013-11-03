@@ -1,6 +1,6 @@
 module.exports = {
-	returnsTrue: function(){
-		return true;
+	isTrue: function(test){
+		return !!test;
 	},
 
 	add: function(a, b){
