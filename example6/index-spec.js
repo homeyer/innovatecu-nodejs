@@ -3,6 +3,7 @@
 
 var chai = require('chai');
 chai.should();
+var sinon = require('sinon');
 
 var example = require('./index');
 
@@ -21,10 +22,6 @@ describe('example 6', function(){
 	});
 
 	describe('add', function(){
-
-		it('should add the first two params', function(){
-			//todo
-		});
 
 	});
 
