@@ -17,7 +17,7 @@ function sendTime() {
     io.sockets.emit('time', { time: new Date().toJSON() });
 }
 
-// Send current time every 10 secs
+// Send current time every 3 secs
 setInterval(sendTime, 3000);
 
 // Emit welcome message on connection
