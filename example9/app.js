@@ -1,36 +1,30 @@
+var http = require('http'),
+    fs = require('fs'),
+    // NEVER use a Sync function except at start-up!
+    index = fs.readFileSync(__dirname + '/index.html');
 
-/**
- * Module dependencies.
- */
+// Send index.html to all requests
+var app = http.createServer(function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(index);
+});
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+// Socket.io server listens to our app
+var io = require('socket.io').listen(app);
 
-var app = express();
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+// Send current time to all connected clients
+function sendTime() {
+    io.sockets.emit('time', { time: new Date().toJSON() });
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+// Send current time every 10 secs
+setInterval(sendTime, 3000);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+// Emit welcome message on connection
+io.sockets.on('connection', function(socket) {
+    socket.emit('welcome', { message: 'Welcome!' });
+
+    socket.on('i am client', console.log);
 });
+
+app.listen(3000);
