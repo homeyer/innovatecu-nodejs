@@ -45,3 +45,23 @@ the package.json file represents what dependencies your node app has.
 to create package.json, run `npm init`, follow the prompts.
 
 install dependencies by running `npm install <name> --save`. The `--save` modifier adds it to package.json. Use `--save-dev` if it's only for dev environments (like test dependencies).
+
+### Example 6: unit testing nodejs, using mocha and chai
+
+install dependencies: `npm install -g mocha`, `npm install chai`
+
+to run tests: `mocha index-spec.js`
+
+### Example 7: using express for web apps
+
+"sinatra for node.js"
+
+to use the express app generator, install express as a global module: `npm install -g express`
+
+running `express test` will create a folder called `test` with an express app in it.
+
+`npm start` to run it.
+
+### Example 8: breaking out your code
+
+learning `module.exports` and `require` to load local dependencies.
