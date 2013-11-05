@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	div List of users:
+
+	div(id='list-of-users')
+
+	br
+	form(action="/users", method="POST")
+		input(type="text", name="name", placeholder="Name")
+		button(type="submit") Create User
+
+	script.
+		$(function(){
+			$.get('/users', function(users) {
+				if(users.length === 0) {
+					$('#list-of-users').html('No users found');
+				} else {
+					for(var i = 0; i < users.length; i++) {
+						var div = '<div>' + users[i].name + '</div>';
+						$('#list-of-users').append(div);
+					}
+				}
+			});	
+		});
